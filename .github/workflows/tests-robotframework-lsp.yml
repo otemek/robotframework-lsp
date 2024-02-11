@@ -107,10 +107,10 @@ jobs:
       env:
         PYTHONPATH: .
         RUN_TESTS_TIMEOUT: 800
-      run: python -u ../../robocorp-python-ls-core/tests/run_tests.py -rfE -otests_output -vv .
+      run: python -u ../../robocorp-python-ls-core/tests/run_tests.py -rfE -otests_output -vv . | tee test_result.txt
     - uses: actions/upload-artifact@v1
       if: always()
       with:
-        name: tests_output.${{ matrix.name }}.txt
+        name: test_result.txt
         path: robotframework-ls/tests/tests_output
 
